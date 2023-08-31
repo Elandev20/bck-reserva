@@ -23,5 +23,10 @@ namespace ReservasHoteles.Service
         {
           return  await _usuarioRepository.getPerfil();
         }
+
+        public async Task<Usuario> Login(Usuario usuario)
+        {
+            return await _usuarioRepository.Login(usuario);
+        }
     }
 }

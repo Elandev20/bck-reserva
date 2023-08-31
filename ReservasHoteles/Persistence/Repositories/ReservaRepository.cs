@@ -16,10 +16,10 @@ namespace ReservasHoteles.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<Reserva> getReserva(int idReserva)
+        public async Task<Reserva> getReservaDetail(int idReserva)
         {
             var reser = await _context.Reserva.Where(x => x.reservaId == idReserva)
-                .Include(x => x.Usuario)
+                .Include(x => x.Pasajero)
                 .Include(x => x.Hotel)
                 .FirstOrDefaultAsync();
             return reser;
@@ -35,6 +35,15 @@ namespace ReservasHoteles.Persistence.Repositories
         {
             _context.Update(reserva);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Reserva>> getReserva()
+        {
+            var reser = await _context.Reserva
+                .Include(x => x.Pasajero)
+                .Include(x => x.Hotel)
+                .ToListAsync();
+            return reser;
         }
     }
 }

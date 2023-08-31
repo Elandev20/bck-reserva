@@ -10,6 +10,8 @@ namespace ReservasHoteles.Domain.IRepositories
 
         Task UpdateBooking(Reserva reserva);
 
-        Task<Reserva> getReserva(int idReserva);
+        Task<Reserva> getReservaDetail(int idReserva);
+
+        Task<List<Reserva>> getReserva();
     }
 }

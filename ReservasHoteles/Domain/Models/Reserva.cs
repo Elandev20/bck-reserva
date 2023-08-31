@@ -10,13 +10,15 @@ namespace ReservasHoteles.Domain.Models
 
         public int hotelId { get; set; }
 
-        public int usuarioId { get; set; }
+        public int pasajeroId { get; set; }
 
         public DateTime fInicio { get; set; }
 
         public DateTime fFin { get; set; }
 
-        public Usuario Usuario { get; set; }
+        public int ciudadDestino { get; set; }
+
+        public Pasajero Pasajero { get; set; }
 
         public Hotel Hotel { get; set; }
     }

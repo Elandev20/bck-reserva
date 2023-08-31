@@ -9,5 +9,7 @@ namespace ReservasHoteles.Domain.IRepositories
         Task SaveUser(Usuario usuario);
 
         Task<List<Perfiles>> getPerfil();
+
+        Task<Usuario> Login(Usuario usuario);
     }
 }

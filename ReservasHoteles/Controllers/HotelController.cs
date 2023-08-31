@@ -15,7 +15,7 @@ namespace ReservasHoteles.Controllers
         public readonly IHotelService _hotelService;
         public readonly IHabitacionService _habitacionService;
         public readonly IReservaService _reservaService;
-        public HotelController(IHotelService hotelService, IHabitacionService habitacionService, IReservaService reservaService) 
+        public HotelController(IHotelService hotelService, IHabitacionService habitacionService, IReservaService reservaService)
         {
             _hotelService = hotelService;
             _habitacionService = habitacionService;
@@ -86,13 +86,43 @@ namespace ReservasHoteles.Controllers
             }
         }
 
-        
-        [HttpGet("{idReserva}")]
-        public async Task<IActionResult> ListBooking(int idReserva)
+        [Route("UpdateHotel")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateHotel(Hotel hotel)
         {
             try
             {
-                return Ok(await _reservaService.getReserva(idReserva));
+                await _hotelService.UpdateHotel(hotel);
+                return Ok(new { mesagge = "Hotel actualizado" });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpGet("{idReserva}")]
+        public async Task<IActionResult> ListBookingDetail(int idReserva)
+        {
+            try
+            {
+                return Ok(await _reservaService.getReservaDetail(idReserva));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListBooking()
+        {
+            try
+            {
+                return Ok(await _reservaService.getReserva());
             }
             catch (System.Exception)
             {

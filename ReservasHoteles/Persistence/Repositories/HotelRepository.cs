@@ -18,5 +18,11 @@ namespace ReservasHoteles.Persistence.Repositories
              _context.Add(hotel);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateHotel(Hotel hotel)
+        {
+            _context.Update(hotel);
+            await _context.SaveChangesAsync();
+        }
     }
 }

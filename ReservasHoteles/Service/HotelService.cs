@@ -18,5 +18,10 @@ namespace ReservasHoteles.Service
         {
             await _hotelRepository.SaveHotel(hotel);
         }
+
+        public async Task UpdateHotel(Hotel hotel)
+        {
+            await _hotelRepository.UpdateHotel(hotel);
+        }
     }
 }

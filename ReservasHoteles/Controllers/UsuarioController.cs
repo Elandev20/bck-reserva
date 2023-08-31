@@ -46,5 +46,25 @@ namespace ReservasHoteles.Controllers
                 throw;
             }
         }
+
+        [Route("Login")]
+        [HttpPost]
+        public async Task<IActionResult> Login(Usuario usuario)
+        {
+            try
+            {
+                var login = await _usuarioService.Login(usuario);
+                if (login == null)
+                {
+                    return BadRequest(new { mesagge = "Usuario o contraseña invalido" });
+                }
+                return Ok(login);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

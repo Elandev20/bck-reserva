@@ -15,9 +15,9 @@ namespace ReservasHoteles.Service
             _reservaRepository = reservaRepository;
         }
 
-        public Task<Reserva> getReserva(int idReserva)
+        public Task<Reserva> getReservaDetail(int idReserva)
         {
-            return _reservaRepository.getReserva(idReserva);
+            return _reservaRepository.getReservaDetail(idReserva);
         }
 
         public async Task SaveBooking(Reserva hotel)
@@ -28,6 +28,11 @@ namespace ReservasHoteles.Service
         public async Task UpdateBooking(Reserva hotel)
         {
             await _reservaRepository.UpdateBooking(hotel);
+        }
+
+        public Task<List<Reserva>> getReserva()
+        {
+            return _reservaRepository.getReserva();
         }
     }
 }
