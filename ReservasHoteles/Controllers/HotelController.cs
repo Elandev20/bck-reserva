@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
 using ReservasHoteles.Service;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ReservasHoteles.Controllers
@@ -61,6 +62,37 @@ namespace ReservasHoteles.Controllers
             {
                 await _reservaService.SaveBooking(reserva);
                 return Ok(new { mesagge = "Reserva registrado" });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [Route("UpdateBooking")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateBooking(Reserva reserva)
+        {
+            try
+            {
+                await _reservaService.UpdateBooking(reserva);
+                return Ok(new { mesagge = "Reserva actualizada" });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
+        [HttpGet("{idReserva}")]
+        public async Task<IActionResult> ListBooking(int idReserva)
+        {
+            try
+            {
+                return Ok(await _reservaService.getReserva(idReserva));
             }
             catch (System.Exception)
             {

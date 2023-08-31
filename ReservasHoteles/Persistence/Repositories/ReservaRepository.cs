@@ -1,6 +1,9 @@
-﻿using ReservasHoteles.Domain.IRepositories;
+﻿using Microsoft.EntityFrameworkCore;
+using ReservasHoteles.Domain.IRepositories;
 using ReservasHoteles.Domain.Models;
 using ReservasHoteles.Persistence.Context;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ReservasHoteles.Persistence.Repositories
@@ -13,9 +16,24 @@ namespace ReservasHoteles.Persistence.Repositories
             _context = context;
         }
 
+        public async Task<Reserva> getReserva(int idReserva)
+        {
+            var reser = await _context.Reserva.Where(x => x.reservaId == idReserva)
+                .Include(x => x.Usuario)
+                .Include(x => x.Hotel)
+                .FirstOrDefaultAsync();
+            return reser;
+        }
+
         public async Task SaveBooking(Reserva reserva)
         {
             _context.Add(reserva);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateBooking(Reserva reserva)
+        {
+            _context.Update(reserva);
             await _context.SaveChangesAsync();
         }
     }
