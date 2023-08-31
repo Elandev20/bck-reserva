@@ -5,7 +5,7 @@ namespace ReservasHoteles.Domain.Models
     public class Hotel
     {
         [Key]
-        public int idHotel { get; set; }
+        public int HotelId { get; set; }
 
         public string nombre { get; set; }
 

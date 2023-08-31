@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace ReservasHoteles.Persistence.Repositories
 {
-    public class HotelRepository : IHotelRepository
+    public class ReservaRepository : IReservaRepository
     {
         private readonly AplicationDbContext _context;
-
-        public HotelRepository(AplicationDbContext context)
+        public ReservaRepository(AplicationDbContext context)
         {
             _context = context;
         }
-        public async Task SaveHotel(Hotel hotel)
+
+        public async Task SaveBooking(Reserva reserva)
         {
-             _context.Add(hotel);
+            _context.Add(reserva);
             await _context.SaveChangesAsync();
         }
     }

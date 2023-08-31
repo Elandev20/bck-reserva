@@ -35,7 +35,18 @@ namespace ReservasHoteles
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IHotelService, HotelService>();
+            services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IHabitacionRepository, HabitacionRepository>();
+            services.AddScoped<IHabitacionService, HabitacionService>();
+            services.AddScoped<IReservaService, ReservaService>();
+            services.AddScoped<IReservaRepository, ReservaRepository>();
             services.AddControllers();
+
+            services.AddCors(options => options.AddPolicy("AllowWebApp",
+                                        builder => builder.AllowAnyOrigin()
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +56,7 @@ namespace ReservasHoteles
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowWebApp");
             app.UseRouting();
 
             app.UseAuthorization();

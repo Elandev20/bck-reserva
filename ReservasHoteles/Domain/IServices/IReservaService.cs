@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace ReservasHoteles.Domain.IServices
 {
-    public interface IHotelService
+    public interface IReservaService
     {
-        Task SaveHotel(Hotel hotel);
+        Task SaveBooking(Reserva reserva);
     }
 }
