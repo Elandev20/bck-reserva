@@ -2,6 +2,7 @@
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
 using ReservasHoteles.Persistence.Repositories;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ReservasHoteles.Service
@@ -22,6 +23,16 @@ namespace ReservasHoteles.Service
         public async Task UpdateHotel(Hotel hotel)
         {
             await _hotelRepository.UpdateHotel(hotel);
+        }
+
+        public async Task<List<Hotel>> listHotels()
+        {
+            return await _hotelRepository.listHotels();
+        }
+
+        public async Task<Hotel> listHotelsById(int id)
+        {
+            return await _hotelRepository.listHotelsById(id);
         }
     }
 }

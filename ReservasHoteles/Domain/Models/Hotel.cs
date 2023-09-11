@@ -7,8 +7,15 @@ namespace ReservasHoteles.Domain.Models
         [Key]
         public int HotelId { get; set; }
 
+        [Required]
         public string nombre { get; set; }
-
+        [Required]
         public bool activo { get; set; }
+        [Required]
+        public int ciudadId { get; set; }
+        [Required]
+        public string imagen { get; set; }
+
+        public Ciudad Ciudad { get; set; }
     }
 }

@@ -41,6 +41,8 @@ namespace ReservasHoteles
             services.AddScoped<IHabitacionService, HabitacionService>();
             services.AddScoped<IReservaService, ReservaService>();
             services.AddScoped<IReservaRepository, ReservaRepository>();
+            services.AddScoped<ICiudadRepository, CiudadRepository>();
+            services.AddScoped<ICiudadService, CiudadService>();
             services.AddControllers();
 
             services.AddCors(options => options.AddPolicy("AllowWebApp",

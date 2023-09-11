@@ -28,12 +28,14 @@ namespace ReservasHoteles.Controllers
         {
             try
             {
-                await _hotelService.SaveHotel(hotel);
+                Hotel newHotel = hotel;
+                newHotel.imagen = newHotel.imagen.Replace("C:\\fakepath\\", "./assets/images/hotels/");
+                await _hotelService.SaveHotel(newHotel);
                 return Ok(new { mesagge = "Hotel registrado" });
             }
             catch (System.Exception)
             {
-
+                return BadRequest(new { mesagge = "Error al momento de almacenar la información" });
                 throw;
             }
         }
@@ -92,6 +94,8 @@ namespace ReservasHoteles.Controllers
         {
             try
             {
+                Hotel newHotel = hotel;
+                newHotel.imagen = newHotel.imagen.Replace("C:\\fakepath\\", "./assets/images/hotels/");
                 await _hotelService.UpdateHotel(hotel);
                 return Ok(new { mesagge = "Hotel actualizado" });
             }
@@ -123,6 +127,35 @@ namespace ReservasHoteles.Controllers
             try
             {
                 return Ok(await _reservaService.getReserva());
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("listHotels")]
+        public async Task<IActionResult> ListHotels()
+        {
+            try
+            {
+                return Ok(await _hotelService.listHotels());
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("listHotelsById/{idHotel}")]
+        public async Task<IActionResult> listHotelsById([FromRoute(Name = "idHotel")] int id)
+        {
+            try
+            {
+                return Ok(await _hotelService.listHotelsById(id));
             }
             catch (System.Exception)
             {

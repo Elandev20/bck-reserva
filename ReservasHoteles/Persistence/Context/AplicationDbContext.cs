@@ -14,6 +14,8 @@ namespace ReservasHoteles.Persistence.Context
         public DbSet<Hotel> Hotel { get; set; }
 
         public DbSet<Habitacion> Habitacion { get; set; }
+
+        public DbSet<Ciudad> Ciudad { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options): base(options)
         {
             
