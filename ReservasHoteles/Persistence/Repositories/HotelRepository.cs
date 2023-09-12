@@ -17,6 +17,24 @@ namespace ReservasHoteles.Persistence.Repositories
             _context = context;
         }
 
+        public async Task disableHotel(int id)
+        {
+            Hotel hotel = new Hotel();
+            hotel = await _context.Hotel.Where(x => x.HotelId == id).FirstOrDefaultAsync();
+            if (hotel.activo == true)
+            {
+                hotel.activo = false;
+                _context.Update(hotel);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                hotel.activo = true;
+                _context.Update(hotel);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task<List<Hotel>> listHotels()
         {
             return await _context.Hotel.Include(x => x.Ciudad).ToListAsync();
@@ -27,6 +45,8 @@ namespace ReservasHoteles.Persistence.Repositories
         {
             return await _context.Hotel.Where(x => x.HotelId == id).Include(x => x.Ciudad).FirstOrDefaultAsync();
         }
+
+        
 
         public async Task SaveHotel(Hotel hotel)
         {

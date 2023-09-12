@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
 using ReservasHoteles.Service;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -40,21 +41,7 @@ namespace ReservasHoteles.Controllers
             }
         }
 
-        [Route("SaveRoom")]
-        [HttpPost]
-        public async Task<IActionResult> SaveRoom(Habitacion habitacion)
-        {
-            try
-            {
-                await _habitacionService.SaveRoom(habitacion);
-                return Ok(new { mesagge = "Habitacion registrado" });
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
+        
 
         [Route("SaveBooking")]
         [HttpPost]
@@ -102,6 +89,22 @@ namespace ReservasHoteles.Controllers
             catch (System.Exception)
             {
 
+                throw;
+            }
+        }
+
+        [Route("disableHotel")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> disableHotel([FromQuery] int id)
+        {
+            try
+            {
+                await _hotelService.disableHotel(Convert.ToInt32(id));
+                return Ok(new { mesagge = "Hotel modificado" });
+            }
+            catch (System.Exception)
+            {
+                return BadRequest(new { mesagge = "Error al momento de almacenar la información" });
                 throw;
             }
         }
@@ -163,6 +166,8 @@ namespace ReservasHoteles.Controllers
                 throw;
             }
         }
+
+        
     }
 
 
