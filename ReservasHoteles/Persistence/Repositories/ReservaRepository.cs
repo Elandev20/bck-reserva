@@ -20,7 +20,7 @@ namespace ReservasHoteles.Persistence.Repositories
         {
             var reser = await _context.Reserva.Where(x => x.reservaId == idReserva)
                 .Include(x => x.Pasajero)
-                .Include(x => x.Hotel)
+                //.Include(x => x.Hotel)
                 .FirstOrDefaultAsync();
             return reser;
         }

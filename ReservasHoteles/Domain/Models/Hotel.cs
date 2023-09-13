@@ -17,5 +17,7 @@ namespace ReservasHoteles.Domain.Models
         public string imagen { get; set; }
 
         public Ciudad Ciudad { get; set; }
+
+        public Habitacion Habitacion { get; set; }
     }
 }

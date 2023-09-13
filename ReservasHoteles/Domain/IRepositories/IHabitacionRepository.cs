@@ -11,5 +11,9 @@ namespace ReservasHoteles.Domain.IRepositories
         Task<List<TipoHabitacion>> ListTypeRoom();
 
         Task<List<Habitacion>> listRoomsByHotel(int id);
+
+        Task<Habitacion> listRoomsById(int id);
+
+        Task UpdateRoom(Habitacion hotel);
     }
 }

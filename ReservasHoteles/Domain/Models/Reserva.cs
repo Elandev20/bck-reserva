@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ReservasHoteles.Domain.Models
 {
@@ -10,7 +11,7 @@ namespace ReservasHoteles.Domain.Models
 
         public int hotelId { get; set; }
 
-        public int pasajeroId { get; set; }
+        public Int64 pasajeroId { get; set; }
 
         public DateTime fInicio { get; set; }
 
@@ -21,5 +22,7 @@ namespace ReservasHoteles.Domain.Models
         public Pasajero Pasajero { get; set; }
 
         public Hotel Hotel { get; set; }
+
+        //public TipoHabitacion TipoHabitacion { get; set; }
     }
 }

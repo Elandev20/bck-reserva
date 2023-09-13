@@ -30,5 +30,15 @@ namespace ReservasHoteles.Service
         {
             return await _habitacionRepository.listRoomsByHotel(id);
         }
+
+        public async Task<Habitacion> listRoomsById(int id)
+        {
+            return await _habitacionRepository.listRoomsById(id);
+        }
+
+        public async Task UpdateRoom(Habitacion hotel)
+        {
+            await _habitacionRepository.UpdateRoom(hotel);
+        }
     }
 }

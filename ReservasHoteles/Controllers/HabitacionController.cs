@@ -58,5 +58,35 @@ namespace ReservasHoteles.Controllers
                 throw;
             }
         }
+
+        [HttpGet("listRoomsById/{idRoom}")]
+        public async Task<IActionResult> listRoomsById([FromRoute(Name = "idRoom")] int id)
+        {
+            try
+            {
+                return Ok(await _habitacionService.listRoomsById(id));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [Route("UpdateRoom")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateRoom(Habitacion habitacion)
+        {
+            try
+            {
+                await _habitacionService.UpdateRoom(habitacion);
+                return Ok(new { mesagge = "Habitacion registrado" });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

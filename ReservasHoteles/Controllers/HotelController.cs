@@ -41,40 +41,6 @@ namespace ReservasHoteles.Controllers
             }
         }
 
-        
-
-        [Route("SaveBooking")]
-        [HttpPost]
-        public async Task<IActionResult> SaveBooking(Reserva reserva)
-        {
-            try
-            {
-                await _reservaService.SaveBooking(reserva);
-                return Ok(new { mesagge = "Reserva registrado" });
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        [Route("UpdateBooking")]
-        [HttpPut]
-        public async Task<IActionResult> UpdateBooking(Reserva reserva)
-        {
-            try
-            {
-                await _reservaService.UpdateBooking(reserva);
-                return Ok(new { mesagge = "Reserva actualizada" });
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
         [Route("UpdateHotel")]
         [HttpPut]
         public async Task<IActionResult> UpdateHotel(Hotel hotel)
@@ -116,20 +82,6 @@ namespace ReservasHoteles.Controllers
             try
             {
                 return Ok(await _reservaService.getReservaDetail(idReserva));
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ListBooking()
-        {
-            try
-            {
-                return Ok(await _reservaService.getReserva());
             }
             catch (System.Exception)
             {

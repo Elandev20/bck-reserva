@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReservasHoteles.Domain.Models
 {
@@ -6,8 +7,6 @@ namespace ReservasHoteles.Domain.Models
     {
         [Key]
         public int habitacionId { get; set; }
-
-        public int hotelId { get; set; }
 
         public string descripcion { get; set; }
 
@@ -19,10 +18,11 @@ namespace ReservasHoteles.Domain.Models
 
         public bool activo { get; set; }
 
-        public Hotel Hotel { get; set; }
-
         public int numeroHabitacion { get; set; }
 
+        public int hotelId { get; set; }
+
         public TipoHabitacion TipoHabitacion { get; set; }
+
     }
 }

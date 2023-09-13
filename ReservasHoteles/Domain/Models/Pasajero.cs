@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReservasHoteles.Domain.Models
 {
     public class Pasajero
     {
         [Key]
-        public int cedula { get; set; }
+        public Int64 cedula { get; set; }
 
         public string nombre { get; set; }
 
@@ -15,6 +16,6 @@ namespace ReservasHoteles.Domain.Models
 
         public string email { get; set; }
 
-        public int telefono { get; set; }
+        public Int64 telefono { get; set; }
     }
 }
