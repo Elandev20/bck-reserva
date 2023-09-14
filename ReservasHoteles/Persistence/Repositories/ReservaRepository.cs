@@ -41,8 +41,29 @@ namespace ReservasHoteles.Persistence.Repositories
         {
             var reser = await _context.Reserva
                 .Include(x => x.Pasajero)
+                .ThenInclude(x => x.Genero)
+                .Include(x => x.Pasajero)
+                .ThenInclude(x => x.TipoDocumento)
                 .Include(x => x.Hotel)
+                .ThenInclude(x => x.Ciudad)
+                .Include(x => x.Habitacion)
+                .ThenInclude(x => x.TipoHabitacion)
                 .ToListAsync();
+            return reser;
+        }
+
+        public async Task<Reserva> getReservaById(int id)
+        {
+            var reser = await _context.Reserva
+                .Include(x => x.Pasajero)
+                .ThenInclude(x => x.Genero)
+                .Include(x => x.Pasajero)
+                .ThenInclude(x => x.TipoDocumento)
+                .Include(x => x.Hotel)
+                .ThenInclude(x => x.Ciudad)
+                .Include(x => x.Habitacion)
+                .ThenInclude(x => x.TipoHabitacion)
+                .Where(x => x.reservaId == id).FirstOrDefaultAsync();
             return reser;
         }
     }

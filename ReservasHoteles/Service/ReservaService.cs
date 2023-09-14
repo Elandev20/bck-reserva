@@ -1,4 +1,5 @@
-﻿using ReservasHoteles.Domain.IRepositories;
+﻿using Microsoft.VisualBasic;
+using ReservasHoteles.Domain.IRepositories;
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace ReservasHoteles.Service
         public Task<List<Reserva>> getReserva()
         {
             return _reservaRepository.getReserva();
+        }
+
+        public async Task<Reserva> getReservaById(int id)
+        {
+            return await _reservaRepository.getReservaById(id);
         }
     }
 }

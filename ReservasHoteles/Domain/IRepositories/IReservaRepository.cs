@@ -13,5 +13,7 @@ namespace ReservasHoteles.Domain.IRepositories
         Task<Reserva> getReservaDetail(int idReserva);
 
         Task<List<Reserva>> getReserva();
+
+        Task<Reserva> getReservaById(int id);
     }
 }

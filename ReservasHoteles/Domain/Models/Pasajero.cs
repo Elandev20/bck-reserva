@@ -10,12 +10,16 @@ namespace ReservasHoteles.Domain.Models
 
         public string nombre { get; set; }
 
-        public int genero { get; set; }
+        public int generoId { get; set; }
 
-        public int tipoDocumento { get; set; }
+        public int tipoDocumentoId { get; set; }
 
         public string email { get; set; }
 
         public Int64 telefono { get; set; }
+
+        public Genero Genero { get; set; }
+
+        public TipoDocumento TipoDocumento { get; set; }
     }
 }

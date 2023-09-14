@@ -17,12 +17,14 @@ namespace ReservasHoteles.Domain.Models
 
         public DateTime fFin { get; set; }
 
-        public int ciudadDestino { get; set; }
+        public int habitacionId { get; set; }
 
         public Pasajero Pasajero { get; set; }
 
         public Hotel Hotel { get; set; }
 
-        //public TipoHabitacion TipoHabitacion { get; set; }
+        public Habitacion Habitacion { get; set; }
+
+
     }
 }

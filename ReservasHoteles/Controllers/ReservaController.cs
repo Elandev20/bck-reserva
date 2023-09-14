@@ -60,5 +60,21 @@ namespace ReservasHoteles.Controllers
                 throw;
             }
         }
+
+
+        [HttpGet]
+        [Route("ListBookingById/{idBooking}")]
+        public async Task<IActionResult> ListBooking([FromRoute(Name = "idBooking")] int id)
+        {
+            try
+            {
+                return Ok(await _reservaService.getReservaById(id));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
