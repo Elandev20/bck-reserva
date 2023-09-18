@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace ReservasHoteles.Controllers
@@ -69,6 +70,37 @@ namespace ReservasHoteles.Controllers
             try
             {
                 return Ok(await _reservaService.getReservaById(id));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpPost]
+        [Route("listFilter")]
+        public async Task<IActionResult> listFilter(Filter filter)
+        {
+            try
+            {
+                return Ok(await _reservaService.filterHotels(filter));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPost]
+        [Route("getRoomByHotel")]
+        public async Task<IActionResult> getRoomByHotel(Filter filter)
+        {
+            try
+            {
+                return Ok(await _reservaService.getRoomByHotel(filter));
             }
             catch (System.Exception)
             {

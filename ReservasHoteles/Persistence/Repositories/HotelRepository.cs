@@ -41,6 +41,13 @@ namespace ReservasHoteles.Persistence.Repositories
                 
         }
 
+        public async Task<List<Hotel>> listHotelsByCity(int id)
+        {
+            return await _context.Hotel.Where(x => x.ciudadId == id && x.activo == true)
+                .Include(x => x.Ciudad)
+                .ToListAsync(); 
+        }
+
         public async Task<Hotel> listHotelsById(int id)
         {
             return await _context.Hotel.Where(x => x.HotelId == id).Include(x => x.Ciudad).FirstOrDefaultAsync();

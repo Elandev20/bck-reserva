@@ -40,6 +40,9 @@ namespace ReservasHoteles.Service
             await _hotelRepository.disableHotel(id);
         }
 
-        
+        public async Task<List<Hotel>> listHotelsByCity(int id)
+        {
+            return await _hotelRepository.listHotelsByCity(id);
+        }
     }
 }

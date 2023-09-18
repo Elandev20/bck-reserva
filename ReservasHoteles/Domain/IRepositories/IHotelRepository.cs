@@ -16,6 +16,6 @@ namespace ReservasHoteles.Domain.IRepositories
 
         Task disableHotel(int id);
 
-        
+        Task<List<Hotel>> listHotelsByCity(int id);
     }
 }

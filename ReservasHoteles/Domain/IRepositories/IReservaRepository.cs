@@ -1,4 +1,5 @@
 ﻿using ReservasHoteles.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,5 +16,9 @@ namespace ReservasHoteles.Domain.IRepositories
         Task<List<Reserva>> getReserva();
 
         Task<Reserva> getReservaById(int id);
+
+        Task<object> filterHotels(Filter filter);
+
+        Task<object> getRoomByHotel(Filter filter);
     }
 }

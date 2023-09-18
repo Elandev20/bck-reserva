@@ -2,6 +2,7 @@
 using ReservasHoteles.Domain.IRepositories;
 using ReservasHoteles.Domain.IServices;
 using ReservasHoteles.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -39,6 +40,16 @@ namespace ReservasHoteles.Service
         public async Task<Reserva> getReservaById(int id)
         {
             return await _reservaRepository.getReservaById(id);
+        }
+
+        public async Task<object> filterHotels(Filter filter)
+        {
+            return await _reservaRepository.filterHotels(filter); 
+        }
+
+        public async Task<object> getRoomByHotel(Filter filter)
+        {
+            return await _reservaRepository.getRoomByHotel(filter);
         }
     }
 }

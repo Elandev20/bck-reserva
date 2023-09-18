@@ -14,7 +14,7 @@ namespace ReservasHoteles.Domain.IServices
 
         Task<Hotel> listHotelsById(int id);
 
-        
+        Task<List<Hotel>> listHotelsByCity(int id);
 
         Task disableHotel(int id);
     }

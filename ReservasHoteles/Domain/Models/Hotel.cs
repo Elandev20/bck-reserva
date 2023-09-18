@@ -16,6 +16,8 @@ namespace ReservasHoteles.Domain.Models
         [Required]
         public string imagen { get; set; }
 
+        public string descripcion { get; set; }
+
         public Ciudad Ciudad { get; set; }
 
         public Habitacion Habitacion { get; set; }

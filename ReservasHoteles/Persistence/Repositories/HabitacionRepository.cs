@@ -45,5 +45,12 @@ namespace ReservasHoteles.Persistence.Repositories
             _context.Update(hotel);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<object> getRoomsByHotel(int id)
+        {
+            return await _context.Habitacion.Join(_context.Reserva, hab => hab.hotelId, res => res.hotelId, (hab, res) => new {hab.habitacionId, hab.descripcion, })
+                
+                .ToListAsync();
+        }
     }
 }

@@ -119,7 +119,20 @@ namespace ReservasHoteles.Controllers
             }
         }
 
-        
+        [HttpGet]
+        [Route("listHotelsByCity/{idCity}")]
+        public async Task<IActionResult> listHotelsByCity([FromRoute(Name = "idCity")] int id)
+        {
+            try
+            {
+                return Ok(await _hotelService.listHotelsByCity(id));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 
 
