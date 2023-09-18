@@ -11,5 +11,7 @@ namespace ReservasHoteles.Domain.Models
         public DateTime fFin { get; set; }
 
         public int hotelId { get; set; }
+
+        public int maxPersonas { get; set; }
     }
 }

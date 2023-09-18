@@ -42,5 +42,15 @@ namespace ReservasHoteles.Persistence.Repositories
             }
             
         }
+
+        public async Task<List<Genero>> getGenero()
+        {
+            return await _context.Genero.ToListAsync();
+        }
+
+        public async Task<List<TipoDocumento>> getTipoDocumento()
+        {
+            return await _context.TipoDocumento.ToListAsync();
+        }
     }
 }

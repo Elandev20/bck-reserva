@@ -17,6 +17,8 @@ namespace ReservasHoteles.Persistence.Context
         public DbSet<TipoHabitacion> TipoHabitacion { get; set; }
 
         public DbSet<Ciudad> Ciudad { get; set; }
+        public DbSet<Genero> Genero { get; set; }
+        public DbSet<TipoDocumento> TipoDocumento { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options): base(options)
         {
             

@@ -22,6 +22,8 @@ namespace ReservasHoteles.Domain.Models
 
         public int hotelId { get; set; }
 
+        public int maxPersonas { get; set; }
+
         public TipoHabitacion TipoHabitacion { get; set; }
 
     }

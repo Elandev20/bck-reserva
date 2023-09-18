@@ -11,5 +11,9 @@ namespace ReservasHoteles.Domain.IServices
         Task<List<Perfiles>> getPerfil();
 
         Task<Usuario> Login(Usuario usuario);
+
+        Task<List<Genero>> getGenero();
+
+        Task<List<TipoDocumento>> getTipoDocumento();
     }
 }

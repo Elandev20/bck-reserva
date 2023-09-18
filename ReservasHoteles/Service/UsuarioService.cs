@@ -28,5 +28,15 @@ namespace ReservasHoteles.Service
         {
             return await _usuarioRepository.Login(usuario);
         }
+
+        public async Task<List<Genero>> getGenero()
+        {
+           return await _usuarioRepository.getGenero();
+        }
+
+        public async Task<List<TipoDocumento>> getTipoDocumento()
+        {
+            return await _usuarioRepository.getTipoDocumento();
+        }
     }
 }

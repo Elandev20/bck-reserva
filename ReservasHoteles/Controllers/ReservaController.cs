@@ -27,7 +27,7 @@ namespace ReservasHoteles.Controllers
             }
             catch (System.Exception)
             {
-
+                return BadRequest(new { mesagge = "Error al momento de almacenar la información" });
                 throw;
             }
         }

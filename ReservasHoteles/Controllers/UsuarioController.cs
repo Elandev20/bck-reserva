@@ -66,5 +66,33 @@ namespace ReservasHoteles.Controllers
                 throw;
             }
         }
+
+        [HttpGet("getGender")]
+        public async Task<List<Genero>> getGender()
+        {
+            try
+            {
+                return await _usuarioService.getGenero();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("getTypeDoc")]
+        public async Task<List<TipoDocumento>> getTypeDoc()
+        {
+            try
+            {
+                return await _usuarioService.getTipoDocumento();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -30,6 +30,9 @@ namespace ReservasHoteles.Persistence.Repositories
 
         public async Task SaveBooking(Reserva reserva)
         {
+            _context.Add(reserva.Pasajero);
+            await _context.SaveChangesAsync();
+
             _context.Add(reserva);
             await _context.SaveChangesAsync();
         }
@@ -88,18 +91,30 @@ namespace ReservasHoteles.Persistence.Repositories
         public async Task<object> getRoomByHotel(Filter filter)
         {
 
-            List<Reserva> roomReserved = new List<Reserva>();
-            roomReserved = await _context.Reserva.Where(x => !(x.fInicio > filter.fFin || x.fFin < filter.fInicio) && x.hotelId == filter.hotelId).ToListAsync();
-
-            List<Habitacion> listRoomFree = new List<Habitacion>();
-            listRoomFree = await _context.Habitacion.Where(x => x.hotelId == filter.hotelId).ToListAsync();
-            foreach (var item in roomReserved)
+            try
             {
-                Habitacion deletelist = listRoomFree.Where(x => x.habitacionId == item.habitacionId).FirstOrDefault();
-                listRoomFree.Remove(deletelist);
-            }
+                List<Reserva> roomReserved = new List<Reserva>();
+                roomReserved = await _context.Reserva
+                    .Where(x => !(x.fInicio > filter.fFin || x.fFin < filter.fInicio) && x.hotelId == filter.hotelId).ToListAsync();
 
-            return listRoomFree;
+                List<Habitacion> listRoomFree = new List<Habitacion>();
+                listRoomFree = await _context.Habitacion
+                    .Include(x => x.TipoHabitacion)
+                    .Where(x => x.hotelId == filter.hotelId && x.maxPersonas <= filter.maxPersonas).ToListAsync();
+                foreach (var item in roomReserved)
+                {
+                    Habitacion deletelist = listRoomFree.Where(x => x.habitacionId == item.habitacionId).FirstOrDefault();
+                    listRoomFree.Remove(deletelist);
+                }
+
+                return listRoomFree;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
     }

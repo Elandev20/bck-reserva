@@ -19,6 +19,10 @@ namespace ReservasHoteles.Domain.Models
 
         public int habitacionId { get; set; }
 
+        public string nombreEmergencia { get; set; }
+
+        public Int64 telefonoEmergencia { get; set; }
+
         public Pasajero Pasajero { get; set; }
 
         public Hotel Hotel { get; set; }

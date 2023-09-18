@@ -22,9 +22,9 @@ namespace ReservasHoteles.Service
             return _reservaRepository.getReservaDetail(idReserva);
         }
 
-        public async Task SaveBooking(Reserva hotel)
+        public async Task SaveBooking(Reserva reserva)
         {
-            await _reservaRepository.SaveBooking(hotel);
+            await _reservaRepository.SaveBooking(reserva);
         }
 
         public async Task UpdateBooking(Reserva hotel)
